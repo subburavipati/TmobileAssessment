@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="cardInfo"
+            type="com.tmobile.subbu.model.data.CardInfo" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_16">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_8"
+            android:text="@{cardInfo.value}"
+            android:textSize="@{cardInfo.attributes.font.size}"
+            android:visibility="@{cardInfo.value != null ? View.VISIBLE : View.GONE}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:color="@{cardInfo.attributes.textColor}" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:h="@{cardInfo.image.size.height}"
+            app:w="@{cardInfo.image.size.width}"
+            android:visibility="@{cardInfo.image != null ? View.VISIBLE : View.GONE}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:url="@{cardInfo.image.url}" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{cardInfo.title.value}"
+            android:textSize="@{cardInfo.title.attributes.font.size}"
+            android:visibility="@{cardInfo.title != null ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toTopOf="@id/description"
+            app:layout_constraintStart_toStartOf="@id/image"
+            android:layout_marginStart="@dimen/dp_8"
+            app:color="@{cardInfo.title.attributes.textColor}" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:text="@{cardInfo.description.value}"
+            android:textSize="@{cardInfo.description.attributes.font.size}"
+            android:visibility="@{cardInfo.description != null ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/image"
+            app:layout_goneMarginTop="@dimen/dp_8"
+            android:layout_marginBottom="@dimen/dp_16"
+            android:layout_marginStart="@dimen/dp_8"
+            app:color="@{cardInfo.description.attributes.textColor}" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

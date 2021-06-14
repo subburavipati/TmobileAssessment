@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TMobileAssessment</string>
+    <string name="could_not_load">Could not load Data. Please try again later.</string>
+</resources>
